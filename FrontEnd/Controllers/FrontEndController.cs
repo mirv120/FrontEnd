@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
 
 namespace FrontEnd;
 
@@ -17,19 +18,24 @@ public class FrontEndController : ControllerBase
     [HttpGet]
     public async Task<string> GetBackEndData()
     {
-        var backEnd1Result = await _backEnd1Repository.GetBackEnd1Data();
-        var backEnd2Result = await _backEnd2Repository.GetBackEnd2Data();
+        try
+        {
+            var backEnd1Result = await _backEnd1Repository.GetBackEnd1Data();
+            var backEnd2Result = await _backEnd2Repository.GetBackEnd2Data();
 
-        return  $"BackEnd1: {backEnd1Result} BackEnd2: {backEnd2Result}";
+            return  $"BackEnd1: {backEnd1Result} BackEnd2: {backEnd2Result}";
+        }
+        catch (Exception)
+        {
+            return "Error encountered when loading data.";
+        }
     }
 
-/*
-[HttpPost]
-public async Task<string> Post()
-{
-    throw new NotImplementedException;
-    //todo: post me
-}
-*/
+    [HttpPost]
+    public async Task Post()
+    {
+        await _backEnd1Repository.WriteBackEnd1Data(42);
+        await _backEnd2Repository.WriteBackEnd2Data(117);
+    }
 
 }
