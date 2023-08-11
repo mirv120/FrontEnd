@@ -8,8 +8,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped(sp => new HttpClient());
-builder.Services.AddScoped<BackEnd1Repository>();
-builder.Services.AddScoped<BackEnd2Repository>();
+builder.Services.AddScoped<IBackEnd1Repository, BackEnd1Repository>();
+builder.Services.AddScoped<IBackEnd2Repository, BackEnd2Repository>();
 
 var app = builder.Build();
 

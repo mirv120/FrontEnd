@@ -7,9 +7,9 @@ namespace FrontEnd;
 [ApiController]
 public class FrontEndController : ControllerBase
 {
-    private readonly BackEnd1Repository _backEnd1Repository;
-    private readonly BackEnd2Repository _backEnd2Repository;
-    public FrontEndController(BackEnd1Repository backEnd1Repository, BackEnd2Repository backEnd2Repository)            
+    private readonly IBackEnd1Repository _backEnd1Repository;
+    private readonly IBackEnd2Repository _backEnd2Repository;
+    public FrontEndController(IBackEnd1Repository backEnd1Repository, IBackEnd2Repository backEnd2Repository)            
     {
         _backEnd1Repository = backEnd1Repository ?? throw new ArgumentNullException(nameof(backEnd1Repository));
         _backEnd2Repository = backEnd2Repository ?? throw new ArgumentNullException(nameof(backEnd2Repository));

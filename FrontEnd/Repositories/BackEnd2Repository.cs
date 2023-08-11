@@ -1,6 +1,6 @@
 ﻿namespace FrontEnd;
 
-public class BackEnd2Repository 
+public class BackEnd2Repository : IBackEnd2Repository
 {
     private readonly HttpClient _httpClient;
     private readonly string _url;
